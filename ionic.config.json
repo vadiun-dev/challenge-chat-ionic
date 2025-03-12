@@ -1,0 +1,7 @@
+{
+  "name": "challenge-chat-ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
