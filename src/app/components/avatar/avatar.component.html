@@ -1,0 +1,25 @@
+<ion-content
+  [style.width]="size === 'small' ? '1.5rem' : '4.4rem'"
+  [style.height]="size === 'small' ? '1.5rem' : '4.4rem'"
+  style="display: flex; position: relative; overflow: hidden"
+>
+  <ion-icon
+    *ngIf="showLiveIndicator"
+    name="ellipse"
+    style="
+      position: absolute;
+      color: #10b981;
+      right: 0;
+      bottom: 0;
+      font-size: 20px;
+    "
+  ></ion-icon>
+
+  <ion-avatar>
+    <img
+      [src]="src"
+      alt="Avatar"
+      style="border-radius: 50%; object-fit: cover"
+    />
+  </ion-avatar>
+</ion-content>

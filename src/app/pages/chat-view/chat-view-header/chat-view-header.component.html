@@ -1,0 +1,40 @@
+<ion-header
+  style="border-bottom: 2px solid #e5e7eb; padding: 0.75rem 0; background: #fff"
+>
+  <ion-toolbar>
+    <div
+      style="
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        padding: 0 1rem;
+      "
+    >
+      <app-avatar
+        size="large"
+        [showLiveIndicator]="true"
+        src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
+      >
+      </app-avatar>
+
+      <div style="display: flex; flex-direction: column; line-height: 1.5">
+        <ion-label
+          style="
+            color: #374151;
+            margin-right: 0.75rem;
+            font-size: 1.5rem;
+            margin-top: 0.25rem;
+          "
+          >Anderson Vanhron</ion-label
+        >
+        <ion-label style="font-size: 1.125rem; color: #4b5563"
+          >Junior Developer</ion-label
+        >
+        <ion-label>{{
+          status === "waiting" ? "Writing..." : "Live"
+        }}</ion-label>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>

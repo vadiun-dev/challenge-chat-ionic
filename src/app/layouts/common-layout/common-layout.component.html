@@ -1,0 +1,28 @@
+<ion-content style="display: flex; min-height: 100vh">
+  <div
+    style="
+      min-height: 100vh;
+      background-attachment: fixed;
+      background-image: var(--app-background);
+    "
+  >
+    <ion-grid style="height: 100vh">
+      <ion-row style="display: flex; justify-content: center; height: 100%">
+        <ion-col size="12" size-md="10" size-lg="8" style="height: 100%">
+          <div
+            style="
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              height: 100%;
+              background-color: #f3f4f6;
+            "
+          >
+            <ng-content></ng-content>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

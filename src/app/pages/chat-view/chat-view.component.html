@@ -1,0 +1,27 @@
+<ng-container *ngIf="messages.length > 0; else start">
+  <app-common-layout>
+    <app-chat-view-header></app-chat-view-header>
+    <app-chat-view-message-list
+      [messages]="messages"
+      style="height: 100%"
+    ></app-chat-view-message-list>
+    <app-chat-view-footer
+      (onMessageSent)="sendMessage($event)"
+    ></app-chat-view-footer>
+  </app-common-layout>
+</ng-container>
+
+<ng-template #start>
+  <div
+    style="
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    "
+  >
+    <ion-button expand="full" color="primary" (click)="createNewChat()">
+      Start new chat
+    </ion-button>
+  </div>
+</ng-template>
