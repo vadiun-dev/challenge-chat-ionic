@@ -2,10 +2,13 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+//TODO: Pick the correct url depending if its a mobile or web app
 export const environment = {
   production: false,
-  apiUrl: 'http://190.114.92.148:3000',
-  socketUrl: 'http://localhost:3000',
+  apiUrl: 'http://10.0.2.2:3000', // FOR MOBILE
+  socketUrl: 'http://10.0.2.2:3000',
+  // apiUrl: 'http://190.114.92.148:3000',
+  // socketUrl: 'http://localhost:3000',
 };
 
 /*

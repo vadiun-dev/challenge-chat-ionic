@@ -7,6 +7,7 @@ import { ChatViewMessageListComponent } from './chat-view-message-list/chat-view
 import { ChatViewFooterComponent } from './chat-view-footer/chat-view-footer.component';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-chat-view',
@@ -24,6 +25,7 @@ import { CommonModule } from '@angular/common';
 export class ChatViewComponent implements OnInit {
   status: boolean = false;
   messages: Messages = [];
+  apiUrl = environment.apiUrl;
 
   constructor(private _chatService: ChatService) {}
 
