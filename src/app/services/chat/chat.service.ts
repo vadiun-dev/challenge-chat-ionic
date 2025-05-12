@@ -23,9 +23,15 @@ export class ChatService {
 
   async createNewChat() {
     const newId = uuidv4();
+    console.log('Creating new chat with ID:', newId);
+    console.log(
+      'WebSocket connection status:',
+      this.wsSrv.getConnection().connected ? 'Connected' : 'Disconnected'
+    );
     this.wsSrv.getConnection().emit('initialize_chat', newId);
+    console.log('Emitted initialize_chat event');
     await Preferences.set({ key: 'uuid', value: newId }); // Reemplaza localStorage
-    this.loadChatMessages();
+    await this.loadChatMessages();
     return newId;
   }
 
@@ -33,26 +39,38 @@ export class ChatService {
     const uuid = (await Preferences.get({ key: 'uuid' })).value;
     if (!uuid) return;
 
+    console.log(
+      `Loading chat messages from ${environment.apiUrl}/messages/${uuid}`
+    );
+
     this.http
-      .get<Messages>(`${environment.socketUrl}/messages/${uuid}`)
+      .get<Messages>(`${environment.apiUrl}/messages/${uuid}`)
       .subscribe({
-        next: (data) => this.setMessages(data),
-        error: (err) => console.error('Error cargando mensajes', err),
+        next: (data) => {
+          console.log('Received messages:', data);
+          this.setMessages(data);
+        },
+        error: (err) => console.error('Error loading messages:', err),
       });
   }
 
   async sendMessage(message: string) {
     const uuid = (await Preferences.get({ key: 'uuid' })).value;
     if (!uuid) return;
+    console.log('Sending message:', message, 'with UUID:', uuid);
     this.wsSrv.getConnection().emit('message_emitted', { message, uuid });
   }
 
   init() {
     this.wsSrv.getConnection().on('new_message', (data: Message) => {
+      console.log('Received new message:', data);
       this.setMessages([...this.messages$.getValue(), data]);
     });
 
     this.loadChatMessages();
-    this.wsSrv.getConnection().on('writing', () => this.setStatus('waiting'));
+    this.wsSrv.getConnection().on('writing', () => {
+      console.log('Server is writing...');
+      this.setStatus('waiting');
+    });
   }
 }

@@ -1,20 +1,26 @@
-import type { CapacitorConfig } from '@capacitor/cli';
+import { CapacitorConfig } from '@capacitor/cli';
+import { KeyboardStyle, KeyboardResize } from '@capacitor/keyboard';
 
 const config: CapacitorConfig = {
   appId: 'io.ionic.starter',
   appName: 'challenge-chat-ionic',
   webDir: 'www',
   server: {
-    allowNavigation: ['190.114.92.148', 'yourdomain.com'], // Add your domain here
+    androidScheme: 'http',
+    allowNavigation: [
+      'http://10.0.2.2:3000', // Para emulador Android
+      'http://10.0.2.2',
+      'http://192.168.1.58:3000', // Para dispositivos en la misma red
+      'http://localhost:3000',
+      'localhost',
+    ],
     cleartext: true,
   },
   plugins: {
-    capacitor: {
-      // Asegúrate de tener los parámetros necesarios para Android
-      android: {
-        minSdkVersion: 21,
-        targetSdkVersion: 33,
-      },
+    Keyboard: {
+      resize: KeyboardResize.Body,
+      style: KeyboardStyle.Dark,
+      resizeOnFullScreen: true,
     },
   },
 };

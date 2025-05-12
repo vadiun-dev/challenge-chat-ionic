@@ -5,9 +5,13 @@
 //TODO: Pick the correct url depending if its a mobile or web app
 export const environment = {
   production: false,
-  apiUrl: 'http://10.0.2.2:3000', // FOR MOBILE
+  apiUrl: 'http://10.0.2.2:3000',
   socketUrl: 'http://10.0.2.2:3000',
-  // apiUrl: 'http://190.114.92.148:3000',
+  // Para probar en dispositivos físicos en la misma red WiFi:
+  // apiUrl: 'http://192.168.1.58:3000',
+  // socketUrl: 'http://192.168.1.58:3000',
+  // Para probar en el navegador:
+  // apiUrl: 'http://localhost:3000',
   // socketUrl: 'http://localhost:3000',
 };
 

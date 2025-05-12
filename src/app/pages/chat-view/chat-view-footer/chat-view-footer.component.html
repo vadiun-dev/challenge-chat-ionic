@@ -1,38 +1,45 @@
-<ion-footer style="border-top: 2px solid #e5e7eb; padding: 1rem 1rem 0.5rem">
-  <ion-toolbar>
-    <div style="display: flex; flex-direction: row; width: 100%">
-      <ion-input
-        type="text"
-        [formControl]="message"
-        placeholder="¡Escribe tu mensaje!"
-        style="
-          width: 100%;
-          outline: none;
-          color: #4b5563;
-          background-color: #e5e7eb;
-          border-radius: 0.375rem;
-          padding: 0.75rem 0.75rem 0.75rem 3rem;
-          font-size: 1rem;
-        "
-      ></ion-input>
+<div style="border-top: 1px solid #e5e7eb; padding: 1rem 1rem 0.5rem">
+  <div
+    style="
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      align-items: center;
+      gap: 0.5rem;
+    "
+  >
+    <ion-input
+      type="text"
+      [formControl]="message"
+      placeholder="¡Escribe tu mensaje!"
+      style="
+        width: 100%;
+        outline: none;
+        color: #4b5563;
+        background-color: #e5e7eb;
+        border-radius: 0.375rem;
+        padding: 0.75rem 0.75rem 0.75rem 3rem;
+        font-size: 1rem;
+        height: 1.5rem;
+      "
+    ></ion-input>
 
-      <ion-button
-        (click)="send()"
-        style="
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 0.5rem;
-          transition: all 0.5s ease-in-out;
-          font-weight: bold;
-        "
-        [style.background-color]="message.invalid ? '#94A3B8' : '#3B82F6'"
-        [style.opacity]="message.invalid ? '0.5' : '1'"
-        [style.cursor]="message.invalid ? 'not-allowed' : 'pointer'"
-        [disabled]="message.invalid"
-      >
-        <ion-icon name="send" style="height: 1.5rem; width: 1.5rem"></ion-icon>
-      </ion-button>
-    </div>
-  </ion-toolbar>
-</ion-footer>
+    <ion-button
+      (click)="send()"
+      style="
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.5rem;
+        transition: all 0.5s ease-in-out;
+        font-weight: bold;
+        margin: 0;
+      "
+      [style.opacity]="message.invalid ? '0.5' : '1'"
+      [style.cursor]="message.invalid ? 'not-allowed' : 'pointer'"
+      [disabled]="message.invalid"
+    >
+      <ion-icon slot="icon-only" name="send" size="default"></ion-icon>
+    </ion-button>
+  </div>
+</div>
